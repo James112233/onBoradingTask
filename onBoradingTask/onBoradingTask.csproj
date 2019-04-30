@@ -231,7 +231,7 @@
     <Content Include="Scripts\react\Sales\SalesCreate.jsx" />
     <Content Include="Scripts\react\Sales\SalesDelete.jsx" />
     <Content Include="Scripts\react\Sales\SalesIndex.jsx" />
-    <Content Include="Scripts\react\Sales\SalesUdpate.jsx" />
+    <Content Include="Scripts\react\Sales\SalesUpdate.jsx" />
     <Content Include="Scripts\react\Store\StoreCreate.jsx" />
     <Content Include="Scripts\react\Store\StoreDelete.jsx" />
     <Content Include="Scripts\react\Store\StoreIndex.jsx" />
