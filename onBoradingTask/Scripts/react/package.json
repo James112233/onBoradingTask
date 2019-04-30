@@ -1,0 +1,27 @@
+{
+  "name": "onboarding",
+  "version": "1.0.0",
+  "description": "onborading task",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Liu",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-tag-input": "^6.4.0",
+    "semantic-ui-react": "^0.86.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^3.3.0"
+  }
+}
