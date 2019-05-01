@@ -8,7 +8,7 @@ export default class StoreUpdate extends Component {
         this.state = {
 
         };
-        å
+        
         this.onClose = this.onClose.bind(this);
     }
 
