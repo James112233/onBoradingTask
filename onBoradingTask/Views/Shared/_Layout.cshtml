@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,8 +31,7 @@
 
     <div class="ui fixed inverted menu ">
         <div class="ui container">
-            <a class="header item" href="/">React</a>
-
+            <a class="header item" href="/">React</a
             <a class="item" href="/Customer/Index">Customers</a>
             <a class="item" href="/Product/Index">Products</a>
             <a class="item" href="/Store/Index">Stores</a>
@@ -42,10 +41,11 @@
 
 
     <div class="container body-content">
+        <br /><br />
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - MVP OnboardingTask by James Liu</p>
         </footer>
     </div>
 
