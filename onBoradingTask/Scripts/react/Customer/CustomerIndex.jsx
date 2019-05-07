@@ -91,6 +91,7 @@ class Table extends Component {
     showUpdateModel(id) {
         this.setState({ showUpdateModel: true });
         this.setState({ updateId: id });
+        console.log("Triggered id: ", id);
 
         $.ajax({
             url: "/Customer/GetUpdateCustomer",
@@ -99,9 +100,14 @@ class Table extends Component {
             success: function (data) {
                 var obj = JSON.parse(data);
                 this.setState({ CustomerId: obj.Id, CustomerName: obj.Name, CustomerAddress: obj.Address });
+                console.log("customermodel: ", obj);
+                console.log("CustomerName: ", this.state.CustomerName);
+                console.log("CustomerAddress: ", this.state.CustomerAddress);
+                console.log("CustomerId: ", this.state.CustomerId);
                 //this.setState({ CustomerId: data.Id, CustomerName: data.Name, CustomerAddress: data.Address })
             }.bind(this)
         });
+        
 
     }
 
@@ -143,7 +149,7 @@ class Table extends Component {
         if (this.validateForm()) {
 
             let data = { 'Id': this.state.CustomerId, 'Name': this.state.CustomerName, 'Address': this.state.CustomerAddress };
-
+            console.log("UpdateId: ", this.state.CustomerId);
             $.ajax({
                 url: "/Customer/UpdateCustomer",
                 type: "POST",

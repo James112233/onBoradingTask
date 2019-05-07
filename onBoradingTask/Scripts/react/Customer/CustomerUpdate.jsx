@@ -10,6 +10,7 @@ export default class CustomerUpdate extends Component {
         };
 
         this.onClose = this.onClose.bind(this);
+        console.log("Model: ", props);
     }
 
     onClose() {

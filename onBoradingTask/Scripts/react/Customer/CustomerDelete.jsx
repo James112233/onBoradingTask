@@ -19,6 +19,7 @@ export default class CustomerDelete extends Component {
             type: "post",
             data: { 'id': id }
         });
+        console.log("Delete Id: ", id);
         window.location.reload()
     }
 
