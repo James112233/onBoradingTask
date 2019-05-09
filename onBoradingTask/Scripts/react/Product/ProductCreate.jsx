@@ -19,7 +19,7 @@ export default class ProductCreate extends Component {
     //    this.onChange = this.onChange.bind(this);
     //}
 
-    validateForm() {
+    validateForm = () => {
 
         let errors = {}
 
@@ -47,7 +47,7 @@ export default class ProductCreate extends Component {
         return formIsValid
     }
 
-    onCreateSubmit(e) {
+    onCreateSubmit = (e) => {
         e.preventDefault();
         if (this.validateForm()) {
             let data = { 'Name': this.state.ProductName, 'Price': this.state.ProductPrice };
@@ -65,12 +65,12 @@ export default class ProductCreate extends Component {
         }
     }
 
-    onClose() {
+    onClose = () => {
         this.setState({ showDeleteModal: false });
         window.location.reload()
     }
 
-    onChange(e) {
+    onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
 

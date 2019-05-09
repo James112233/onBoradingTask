@@ -28,7 +28,9 @@ class Table extends Component {
             updateId: 0,
 
             Success: [],
-            errors: {}
+            errors: {},
+
+            commObj: []
         }
 
     //    this.loadData = this.loadData.bind(this);
@@ -92,14 +94,17 @@ class Table extends Component {
         this.setState({ showUpdateModel: true });
         this.setState({ updateId: id });
         console.log("Triggered id: ", id);
+        //var obj;
 
         $.ajax({
             url: "/Customer/GetUpdateCustomer",
             type: "GET",
             data: { 'id': id },
             success: function (data) {
-                var obj = JSON.parse(data);
-                this.setState({ CustomerId: obj.Id, CustomerName: obj.Name, CustomerAddress: obj.Address }, () => {
+                this.setState({ commObj: JSON.parse(data) });
+                
+                this.setState({ CustomerId: this.state.commObj.ID, CustomerName: this.state.commObj.NAME, CustomerAddress: this.state.commObj.ADDRESS }, () => {
+                    console.log("obj: ", this.state.commObj);
                     console.log("CustomerId:", this.state.CustomerId);
                     console.log("CustomerName:", this.state.CustomerName);
                     console.log("CustomerAddress:", this.state.CustomerAddress);
@@ -108,6 +113,7 @@ class Table extends Component {
                 //this.setState({ CustomerId: data.Id, CustomerName: data.Name, CustomerAddress: data.Address })
             }.bind(this)
         });
+        console.log("obj: ", this.state.commObj);
         
 
     }

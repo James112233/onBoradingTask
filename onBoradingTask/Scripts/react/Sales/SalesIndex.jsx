@@ -122,16 +122,13 @@ class Table extends Component {
             success: function (data) {
                 var obj = JSON.parse(data);
                 this.setState({
-                    SaleId: obj.Id,
-                    CustomerId: obj.CustomerId,
-                    ProductId: obj.ProductId,
-                    StoreId: obj.StoreId,
-                    DateSold: this.DateConverter(obj.DateSold)
-                }),
-                    //console.log("obj.DateSold", obj.DateSold),
-                    //console.log("DateConverter", this.DateConverter(obj.DateSold)),
-                    console.log("showUpdateModel", obj)
-            }.bind(this)
+                    SaleId: obj.ID,
+                    CustomerId: obj.CUSTOMERID,
+                    ProductId: obj.PRODUCTID,
+                    StoreId: obj.STOREID,
+                    DateSold: this.DateConverter(obj.DATESOLD)
+                });
+            }.bind(this),
         });
     }
 
@@ -186,10 +183,10 @@ class Table extends Component {
                 type: "POST",
                 data: data,
                 success: function (data) {
-                    this.setState({ Success: data })
-                    window.location.reload()
-                    console.log("onUpdateSubmit", data)
-                }.bind(this)
+                    this.setState({ Success: data });
+                    window.location.reload();
+                    console.log("onUpdateSubmit", data);
+                }.bind(this),
             });
         }
     }
@@ -207,11 +204,11 @@ class Table extends Component {
                     <td className="two wide">{this.TableDateForm(sale.DateSold)}</td>
 
                     <td className="four wide">
-                        <Button className="ui yellow button" onClick={this.showUpdateModel.bind(this, sale.Id)}><i className="edit icon"></i>EDIT</Button>
+                        <Button className="ui yellow button" onClick={this.showUpdateModel.bind(this,sale.Id)}><i className="edit icon"></i>EDIT</Button>
                     </td>
 
                     <td className="four wide">
-                        <Button className="ui red button" onClick={this.handleDelete.bind(this, sale.Id)}><i className="trash icon"></i>DELETE</Button>
+                        <Button className="ui red button" onClick={this.handleDelete.bind(this,sale.Id)}><i className="trash icon"></i>DELETE</Button>
                     </td>
 
                 </tr>

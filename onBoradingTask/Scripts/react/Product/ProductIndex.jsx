@@ -68,7 +68,7 @@ class Table extends Component {
         this.setState({ deleteId: id });
     }
 
-    closeDeleteModal =() => {
+    closeDeleteModal = () => {
         this.setState({ showDeleteModal: false });
         window.location.reload()
     }
@@ -98,9 +98,9 @@ class Table extends Component {
             data: { 'id': id },
             success: function (data) {
                 var obj = JSON.parse(data);
-                this.setState({ ProductId: obj.Id, ProductName: obj.Name, ProductPrice: obj.Price });
+                this.setState({ ProductId: obj.ID, ProductName: obj.NAME, ProductPrice: obj.PRICE });
                 //this.setState({ ProductId: data.Id, ProductName: data.Name, ProductPrice: data.Price })
-            }.bind(this)
+            }.bind(this),
         });
     }
 
@@ -149,7 +149,7 @@ class Table extends Component {
                 success: function (data) {
                     this.setState({ Success: data })
                     window.location.reload()
-                }.bind(this)
+                }.bind(this),
             });
 
         }

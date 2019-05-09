@@ -98,8 +98,8 @@ class Table extends Component {
             data: { 'id': id },
             success: function (data) {
                 var obj = JSON.parse(data);
-                this.setState({ StoreId: obj.Id, StoreName: obj.Name, StoreAddress: obj.Address });
-            }.bind(this)
+                this.setState({ StoreId: obj.ID, StoreName: obj.NAME, StoreAddress: obj.ADDRESS });
+            }.bind(this),
         });
 
     }
@@ -149,7 +149,7 @@ class Table extends Component {
                 success: function (data) {
                     this.setState({ Success: data })
                     window.location.reload()
-                }.bind(this)
+                }.bind(this),
             });
         }
     }
@@ -169,7 +169,7 @@ class Table extends Component {
                     </td>
 
                     <td className="four wide">
-                        <Button className="ui red button" onClick={this.handleDelete.bind(this, store.StoreId)}><i className="trash icon"></i>DELETE</Button>
+                        <Button className="ui red button" onClick={this.handleDelete.bind(this,store.StoreId)}><i className="trash icon"></i>DELETE</Button>
                     </td>
 
                 </tr>
