@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, Form } from 'semantic-ui-react';
 
 export default class CustomerUpdate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
+            CustomerName: this.props.Name,
+            CustomerAddress: this.props.Address
+        }
 
-        };
-
-        this.onClose = this.onClose.bind(this);
-        console.log("Model: ", props);
+    //    this.onClose = this.onClose.bind(this);
+    //    console.log("Model: ", props);
+    //}
+    componentDidMount() {
+        console.log("props: ", this.props);
     }
 
-    onClose() {
+    onClose = () => {
         this.setState({ showUpdateModel: false });
         window.location.reload()
     }
@@ -27,14 +31,14 @@ export default class CustomerUpdate extends Component {
                         <Form>
                             <Form.Field>
                                 <label>Name</label>
-                                <input type="text" name="CustomerName" placeholder='Name' defaultValue={this.props.Name} onChange={this.props.onChange} />
+                                <input type="text" name="CustomerName" placeholder='Name' defaultValue={this.state.CustomerName} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.CustomerName}
                                 </div>
                             </Form.Field>
                             <Form.Field>
                                 <label>Address</label>
-                                <input type="text" name="CustomerAddress" placeholder='Address' defaultValue={this.props.Address} onChange={this.props.onChange} />
+                                <input type="text" name="CustomerAddress" placeholder='Address' defaultValue={this.state.CustomerAddress} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.CustomerAddress}
                                 </div>

@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, Form } from 'semantic-ui-react';
 
 export default class StoreUpdate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
 
-        };
+        }
         
-        this.onClose = this.onClose.bind(this);
-    }
+    //    this.onClose = this.onClose.bind(this);
+    //}
 
-    onClose() {
+    onClose = () => {
         this.setState({ showUpdateModel: false });
         window.location.reload()
     }

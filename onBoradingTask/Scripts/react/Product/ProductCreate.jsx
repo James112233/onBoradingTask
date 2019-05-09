@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, Form } from 'semantic-ui-react';
 
 export default class ProductCreate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
             Success: { Data: '' },
             ProductName: '',
             ProductPrice: '',
 
             Success: [],
             errors: {}
-        };
+        }
 
-        this.onCreateSubmit = this.onCreateSubmit.bind(this);
-        this.onClose = this.onClose.bind(this);
-        this.onChange = this.onChange.bind(this);
-    }
+    //    this.onCreateSubmit = this.onCreateSubmit.bind(this);
+    //    this.onClose = this.onClose.bind(this);
+    //    this.onChange = this.onChange.bind(this);
+    //}
 
     validateForm() {
 

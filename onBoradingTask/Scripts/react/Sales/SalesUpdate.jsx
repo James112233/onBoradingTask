@@ -3,22 +3,22 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, Form } from 'semantic-ui-react';
 
 export default class SaleUpdate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
             Success: { Data: '' },
 
             CustomerDropdownList: [],
             ProductDropdownList: [],
             StoresDropdownList: []
-        };
+        }
 
-        this.onClose = this.onClose.bind(this);
+        //this.onClose = this.onClose.bind(this);
 
-        this.CustomersDropdown = this.CustomersDropdown.bind(this);
-        this.ProductsDropdown = this.ProductsDropdown.bind(this);
-        this.StoresDropdown = this.StoresDropdown.bind(this);
-    }
+        //this.CustomersDropdown = this.CustomersDropdown.bind(this);
+        //this.ProductsDropdown = this.ProductsDropdown.bind(this);
+        //this.StoresDropdown = this.StoresDropdown.bind(this);
+    //}
 
     componentDidMount() {
         this.CustomersDropdown();
@@ -26,12 +26,12 @@ export default class SaleUpdate extends Component {
         this.StoresDropdown();
     }
 
-    onClose() {
+    onClose = () => {
         this.setState({ showUpdateModel: false });
         window.location.reload()
     }
 
-    CustomersDropdown() {
+    CustomersDropdown = () => {
         $.ajax({
             url: "/Sales/GetCustomers",
             type: "GET",
@@ -41,7 +41,7 @@ export default class SaleUpdate extends Component {
         });
     }
 
-    ProductsDropdown() {
+    ProductsDropdown = () => {
         $.ajax({
             url: "/Sales/GetProducts",
             type: "GET",
@@ -51,7 +51,7 @@ export default class SaleUpdate extends Component {
         });
     }
 
-    StoresDropdown() {
+    StoresDropdown = () => {
         $.ajax({
             url: "/Sales/GetStores",
             type: "GET",

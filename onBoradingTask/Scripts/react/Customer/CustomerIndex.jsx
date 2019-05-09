@@ -9,9 +9,9 @@ import CustomerUpdate from './CustomerUpdate.jsx';
 //ReactDOM.render(<div>Hello World!</div>, app);
 
 class Table extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
             CustomerList: [],
             Success: { Data: '' },
 
@@ -29,28 +29,28 @@ class Table extends Component {
 
             Success: [],
             errors: {}
-        };
+        }
 
-        this.loadData = this.loadData.bind(this);
+    //    this.loadData = this.loadData.bind(this);
 
-        this.showCreateModel = this.showCreateModel.bind(this);
-        this.closeCreateModel = this.closeCreateModel.bind(this);
-        this.onChange = this.onChange.bind(this);
+    //    this.showCreateModel = this.showCreateModel.bind(this);
+    //    this.closeCreateModel = this.closeCreateModel.bind(this);
+    //    this.onChange = this.onChange.bind(this);
 
-        this.handleDelete = this.handleDelete.bind(this);
-        this.closeDeleteModal = this.closeDeleteModal.bind(this);
+    //    this.handleDelete = this.handleDelete.bind(this);
+    //    this.closeDeleteModal = this.closeDeleteModal.bind(this);
 
-        this.showUpdateModel = this.showUpdateModel.bind(this);
-        this.closeUpdateModel = this.closeUpdateModel.bind(this);
-        this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
-    }
+    //    this.showUpdateModel = this.showUpdateModel.bind(this);
+    //    this.closeUpdateModel = this.closeUpdateModel.bind(this);
+    //    this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
+    //}
 
     componentDidMount() {
         this.loadData();
     }
 
     //Get customers
-    loadData() {
+    loadData = () => {
         $.ajax({
             url: "/Customer/GetCustomerList",
             type: "GET",
@@ -61,34 +61,34 @@ class Table extends Component {
     }
 
     //Create
-    showCreateModel() {
+    showCreateModel = () => {
         this.setState({ showCreateModel: true });
     }
 
-    closeCreateModel() {
+    closeCreateModel =() => {
         this.setState({ showCreateModel: false });
         window.location.reload()
     }
 
-    onChange(e) {
+    onChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value });
     }
 
     //Delete    
-    handleDelete(id) {
+    handleDelete = (id) => {
 
         this.setState({ showDeleteModal: true });
         this.setState({ deleteId: id });
     }
 
-    closeDeleteModal() {
+    closeDeleteModal= () => {
         this.setState({ showDeleteModal: false });
         window.location.reload()
     }
 
     //Update
-    showUpdateModel(id) {
+    showUpdateModel = (id) => {
         this.setState({ showUpdateModel: true });
         this.setState({ updateId: id });
         console.log("Triggered id: ", id);
@@ -99,11 +99,12 @@ class Table extends Component {
             data: { 'id': id },
             success: function (data) {
                 var obj = JSON.parse(data);
-                this.setState({ CustomerId: obj.Id, CustomerName: obj.Name, CustomerAddress: obj.Address });
-                console.log("customermodel: ", obj);
-                console.log("CustomerName: ", this.state.CustomerName);
-                console.log("CustomerAddress: ", this.state.CustomerAddress);
-                console.log("CustomerId: ", this.state.CustomerId);
+                this.setState({ CustomerId: obj.Id, CustomerName: obj.Name, CustomerAddress: obj.Address }, () => {
+                    console.log("CustomerId:", this.state.CustomerId);
+                    console.log("CustomerName:", this.state.CustomerName);
+                    console.log("CustomerAddress:", this.state.CustomerAddress);
+                });
+                
                 //this.setState({ CustomerId: data.Id, CustomerName: data.Name, CustomerAddress: data.Address })
             }.bind(this)
         });
@@ -111,12 +112,12 @@ class Table extends Component {
 
     }
 
-    closeUpdateModel() {
+    closeUpdateModel = () => {
         this.setState({ showUpdateModel: false });
         window.location.reload()
     }
 
-    validateForm() {
+    validateForm = () => {
         console.log(this.state.CustomerName, this.state.CustomerAddress);
 
         let errors = {};
@@ -145,7 +146,7 @@ class Table extends Component {
         return formIsValid
     }
 
-    onUpdateSubmit() {
+    onUpdateSubmit = () => {
         if (this.validateForm()) {
 
             let data = { 'Id': this.state.CustomerId, 'Name': this.state.CustomerName, 'Address': this.state.CustomerAddress };
@@ -163,7 +164,8 @@ class Table extends Component {
     }
 
     render() {
-        //console.log(this.state.CustomerId, this.state.CustomerName, this.state.CustomerAddress);
+        //console.log("state:", this.state.CustomerId, this.state.CustomerName, this.state.CustomerAddress);
+        console.log("state:", this.state);
         let list = this.state.CustomerList;
         let tableData = null;
         if (list != "") {

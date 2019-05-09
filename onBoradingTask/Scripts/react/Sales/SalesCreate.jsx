@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, Form } from 'semantic-ui-react';
 
 export default class SaleCreate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
             Success: { Data: '' },
 
             ProductId: '',
@@ -19,16 +19,16 @@ export default class SaleCreate extends Component {
 
             Sucess: [],
             errors: {}
-        };
+        }
 
-        this.onCreateSubmit = this.onCreateSubmit.bind(this);
-        this.onClose = this.onClose.bind(this);
-        this.onChange = this.onChange.bind(this);
+    //    this.onCreateSubmit = this.onCreateSubmit.bind(this);
+    //    this.onClose = this.onClose.bind(this);
+    //    this.onChange = this.onChange.bind(this);
 
-        this.CustomersDropdown = this.CustomersDropdown.bind(this);
-        this.ProductsDropdown = this.ProductsDropdown.bind(this);
-        this.StoresDropdown = this.StoresDropdown.bind(this);
-    }
+    //    this.CustomersDropdown = this.CustomersDropdown.bind(this);
+    //    this.ProductsDropdown = this.ProductsDropdown.bind(this);
+    //    this.StoresDropdown = this.StoresDropdown.bind(this);
+    //}
 
     componentDidMount() {
         this.CustomersDropdown();
@@ -36,7 +36,7 @@ export default class SaleCreate extends Component {
         this.StoresDropdown();
     }
 
-    validateForm() {
+    validateForm = () => {
 
         let errors = {}
 
@@ -67,7 +67,7 @@ export default class SaleCreate extends Component {
         return formIsValid
     }
 
-    onCreateSubmit(e) {
+    onCreateSubmit = (e) => {
         e.preventDefault();
         if (this.validateForm()) {
             let data = {
@@ -90,17 +90,17 @@ export default class SaleCreate extends Component {
         }
     }
 
-    onClose() {
+    onClose = () => {
         this.setState({ showDeleteModal: false });
         window.location.reload()
     }
 
-    onChange(e) {
+    onChange = (e) => {
         console.log(e.target.value)
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    CustomersDropdown() {
+    CustomersDropdown = () => {
         $.ajax({
             url: "/Sales/GetCustomers",
             type: "GET",
@@ -110,7 +110,7 @@ export default class SaleCreate extends Component {
         });
     }
 
-    ProductsDropdown() {
+    ProductsDropdown = () => {
         $.ajax({
             url: "/Sales/GetProducts",
             type: "GET",
@@ -120,7 +120,7 @@ export default class SaleCreate extends Component {
         });
     }
 
-    StoresDropdown() {
+    StoresDropdown = () => {
         $.ajax({
             url: "/Sales/GetStores",
             type: "GET",

@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom';
 import { Modal, Button } from 'semantic-ui-react';
 
 export default class SaleDelete extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
 
-        };
+        }
 
-        this.onDeleteSubmit = this.onDeleteSubmit.bind(this);
-        this.onClose = this.onClose.bind(this);
-    }
+    //    this.onDeleteSubmit = this.onDeleteSubmit.bind(this);
+    //    this.onClose = this.onClose.bind(this);
+    //}
 
-    onDeleteSubmit(id) {
+    onDeleteSubmit = (id) => {
         $.ajax({
             url: "/Sales/DeleteSale",
             type: "post",
@@ -22,7 +22,7 @@ export default class SaleDelete extends Component {
         window.location.reload()
     }
 
-    onClose() {
+    onClose = () => {
         this.setState({ showDeleteModal: false });
         window.location.reload()
     }

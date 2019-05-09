@@ -3,23 +3,23 @@ import ReactDOM from 'react-dom';
 import { Modal, Button, Form } from 'semantic-ui-react';
 
 export default class CustomerCreate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    //constructor(props) {
+    //    super(props);
+        state = {
             Success: { Data: '' },
             CustomerName: '',
             CustomerAddress: '',
 
             Success: [],
             errors: {}
-        };
+        }
 
-        this.onCreateSubmit = this.onCreateSubmit.bind(this);
-        this.onClose = this.onClose.bind(this);
-        this.onChange = this.onChange.bind(this);
-    }
+    //    this.onCreateSubmit = this.onCreateSubmit.bind(this);
+    //    this.onClose = this.onClose.bind(this);
+    //    this.onChange = this.onChange.bind(this);
+    //}
 
-    validateForm() {
+    validateForm = () => {
 
         let errors = {}
 
@@ -47,7 +47,7 @@ export default class CustomerCreate extends Component {
         return formIsValid
     }
 
-    onCreateSubmit(e) {
+    onCreateSubmit = (e) => {
         e.preventDefault();
         if (this.validateForm()) {
             let data = { 'Name': this.state.CustomerName, 'Address': this.state.CustomerAddress };
@@ -65,12 +65,12 @@ export default class CustomerCreate extends Component {
         }
     }
 
-    onClose() {
+    onClose = () => {
         this.setState({ showDeleteModal: false });
         window.location.reload()
     }
 
-    onChange(e) {
+    onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
 
