@@ -69,7 +69,8 @@ class Table extends Component {
 
     closeCreateModel =() => {
         this.setState({ showCreateModel: false });
-        window.location.reload()
+        //window.location.reload()
+        this.loadData();
     }
 
     onChange = (e) => {
@@ -86,7 +87,8 @@ class Table extends Component {
 
     closeDeleteModal= () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
+        this.loadData();
+        //window.location.reload()
     }
 
     //Update
@@ -120,7 +122,7 @@ class Table extends Component {
 
     closeUpdateModel = () => {
         this.setState({ showUpdateModel: false });
-        window.location.reload()
+        //window.location.reload()
     }
 
     validateForm = () => {
@@ -163,7 +165,7 @@ class Table extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    window.location.reload()
+                    //window.location.reload()
                 }.bind(this)
             });
         }

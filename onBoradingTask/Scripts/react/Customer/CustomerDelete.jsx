@@ -20,12 +20,12 @@ export default class CustomerDelete extends Component {
             data: { 'id': id }
         });
         console.log("Delete Id: ", id);
-        window.location.reload()
+        //window.location.reload()
     }
 
     onClose = () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
+        //window.location.reload()
     }
 
     render() {

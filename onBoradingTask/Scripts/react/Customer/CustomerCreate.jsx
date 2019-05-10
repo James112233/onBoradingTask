@@ -58,7 +58,7 @@ export default class CustomerCreate extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    window.location.reload()
+                    //window.location.reload()
                 }.bind(this)
             });
 
@@ -67,7 +67,7 @@ export default class CustomerCreate extends Component {
 
     onClose = () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
+        //window.location.reload()
     }
 
     onChange = (e) => {

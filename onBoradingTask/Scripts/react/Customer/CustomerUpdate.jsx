@@ -20,7 +20,7 @@ export default class CustomerUpdate extends Component {
 
     onClose = () => {
         this.setState({ showUpdateModel: false });
-        window.location.reload()
+        //window.location.reload()
     }
 
     render() {
