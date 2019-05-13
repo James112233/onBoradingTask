@@ -28,7 +28,6 @@ export default class SaleUpdate extends Component {
 
     onClose = () => {
         this.setState({ showUpdateModel: false });
-        window.location.reload()
     }
 
     CustomersDropdown = () => {

@@ -14,7 +14,6 @@ export default class StoreUpdate extends Component {
 
     onClose = () => {
         this.setState({ showUpdateModel: false });
-        window.location.reload()
     }
 
     render() {

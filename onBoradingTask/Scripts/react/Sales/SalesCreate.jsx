@@ -82,9 +82,8 @@ export default class SaleCreate extends Component {
                 type: "POST",
                 data: data,
                 success: function (data) {
-                    this.setState({ Success: data })
-
-                    window.location.reload()
+                    this.setState({ Success: data });
+                    this.props.onCreateSuccess();
                 }.bind(this)
             });
         }
@@ -92,7 +91,6 @@ export default class SaleCreate extends Component {
 
     onClose = () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
     }
 
     onChange = (e) => {

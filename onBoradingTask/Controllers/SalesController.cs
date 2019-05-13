@@ -131,7 +131,7 @@ namespace onBoradingTask.Controllers
         {
             try
             {
-                PRODUCT sale = db.PRODUCT.Where(x => x.ID == id).SingleOrDefault();
+                SALES sale = db.SALES.Where(x => x.ID == id).SingleOrDefault();
                 string value = JsonConvert.SerializeObject(sale, Formatting.Indented, new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore

@@ -17,14 +17,15 @@ export default class ProductDelete extends Component {
         $.ajax({
             url: "/Product/DeleteProduct",
             type: "post",
-            data: { 'id': id }
+            data: { 'id': id },
+            success: () => {
+                this.props.onDeleteSuccess();
+            }
         });
-        window.location.reload()
     }
 
     onClose = () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
     }
 
     render() {

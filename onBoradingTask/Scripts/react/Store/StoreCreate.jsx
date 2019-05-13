@@ -58,7 +58,7 @@ export default class StoreCreate extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    window.location.reload()
+                    this.props.onCreateSuccess();
                 }.bind(this)
             });
 
@@ -67,7 +67,6 @@ export default class StoreCreate extends Component {
 
     onClose = () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
     }
 
     onChange = (e) => {

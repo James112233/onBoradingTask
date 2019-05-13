@@ -90,7 +90,7 @@ class Table extends Component {
 
     closeCreateModel = () => {
         this.setState({ showCreateModel: false });
-        window.location.reload()
+        this.loadData();
     }
 
     onChange = (e) => {
@@ -107,7 +107,7 @@ class Table extends Component {
 
     closeDeleteModal = () => {
         this.setState({ showDeleteModal: false });
-        window.location.reload()
+        this.loadData();
     }
 
     //Update
@@ -121,6 +121,7 @@ class Table extends Component {
             data: { 'id': id },
             success: function (data) {
                 var obj = JSON.parse(data);
+                console.log("data: ", data);
                 this.setState({
                     SaleId: obj.ID,
                     CustomerId: obj.CUSTOMERID,
@@ -134,7 +135,7 @@ class Table extends Component {
 
     closeUpdateModel = () => {
         this.setState({ showUpdateModel: false });
-        window.location.reload()
+        this.loadData();
     }
 
     validateForm = () => {
@@ -184,7 +185,7 @@ class Table extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data });
-                    window.location.reload();
+                    this.closeUpdateModel();
                     console.log("onUpdateSubmit", data);
                 }.bind(this),
             });
@@ -220,11 +221,11 @@ class Table extends Component {
             <React.Fragment>
                 <div>
                     <div><Button primary onClick={this.showCreateModel}>New Sale</Button></div>
-                    <SaleCreate onChange={this.onChange} onClose={this.closeCreateModel} onCreateSubmit={this.onCreateSubmit} showCreateModel={this.state.showCreateModel} />
+                    <SaleCreate onChange={this.onChange} onClose={this.closeCreateModel} onCreateSuccess={this.closeCreateModel} showCreateModel={this.state.showCreateModel} />
                 </div>
 
                 <div>
-                    <SaleDelete delete={this.state.deleteId} onClose={this.closeDeleteModal} onDeleteSubmit={this.onDeleteSubmit} showDeleteModal={this.state.showDeleteModal} />
+                    <SaleDelete delete={this.state.deleteId} onClose={this.closeDeleteModal} onDeleteSuccess={this.closeDeleteModal} showDeleteModal={this.state.showDeleteModal} />
                     <SaleUpdate onChange={this.onChange} update={this.state.updateId} onClose={this.closeUpdateModel} onUpdateSubmit={this.onUpdateSubmit} showUpdateModel={this.state.showUpdateModel}
                         Id={this.state.Id} ProductId={this.state.ProductId} CustomerId={this.state.CustomerId} StoreId={this.state.StoreId} DateSold={this.state.DateSold} errors={this.state.errors} />
                     <table className="ui striped table">

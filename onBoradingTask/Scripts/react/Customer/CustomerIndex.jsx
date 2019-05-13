@@ -122,7 +122,7 @@ class Table extends Component {
 
     closeUpdateModel = () => {
         this.setState({ showUpdateModel: false });
-        //window.location.reload()
+        this.loadData();
     }
 
     validateForm = () => {
@@ -165,7 +165,7 @@ class Table extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    //window.location.reload()
+                    this.closeUpdateModel();
                 }.bind(this)
             });
         }
@@ -199,10 +199,10 @@ class Table extends Component {
             <React.Fragment>
                 <div>
                     <div><Button primary onClick={this.showCreateModel}>New Customer</Button></div>
-                    <CustomerCreate onChange={this.onChange} onClose={this.closeCreateModel} onCreateSubmit={this.onCreateSubmit} showCreateModel={this.state.showCreateModel} />
+                    <CustomerCreate onChange={this.onChange} onClose={this.closeCreateModel} onSubmitSuccess={this.closeCreateModel} showCreateModel={this.state.showCreateModel} />
                 </div>
                 <div>
-                    <CustomerDelete delete={this.state.deleteId} onClose={this.closeDeleteModal} onDeleteSubmit={this.onDeleteSubmit} showDeleteModal={this.state.showDeleteModal} />
+                    <CustomerDelete delete={this.state.deleteId} onClose={this.closeDeleteModal} onDeleteSuccess={this.closeDeleteModal} showDeleteModal={this.state.showDeleteModal} />
                     <CustomerUpdate onChange={this.onChange} update={this.state.updateId} onClose={this.closeUpdateModel} onUpdateSubmit={this.onUpdateSubmit} showUpdateModel={this.state.showUpdateModel} Id={this.state.CustomerId} Name={this.state.CustomerName} Address={this.state.CustomerAddress} errors={this.state.errors} />
                     <table className="ui striped table">
                         <thead>

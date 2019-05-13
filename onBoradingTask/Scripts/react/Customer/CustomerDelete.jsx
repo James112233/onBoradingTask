@@ -17,10 +17,11 @@ export default class CustomerDelete extends Component {
         $.ajax({
             url: "/Customer/DeleteCustomer",
             type: "post",
-            data: { 'id': id }
+            data: { 'id': id },
+            success: () => {
+                this.props.onDeleteSuccess();
+            }
         });
-        console.log("Delete Id: ", id);
-        //window.location.reload()
     }
 
     onClose = () => {

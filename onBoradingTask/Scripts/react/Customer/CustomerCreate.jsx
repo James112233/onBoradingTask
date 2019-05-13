@@ -58,7 +58,7 @@ export default class CustomerCreate extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    //window.location.reload()
+                    this.props.onSubmitSuccess();
                 }.bind(this)
             });
 
