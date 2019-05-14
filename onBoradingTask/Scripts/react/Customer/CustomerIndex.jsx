@@ -57,7 +57,7 @@ class Table extends Component {
             url: "/Customer/GetCustomerList",
             type: "GET",
             success: function (data) {
-                this.setState({ CustomerList: data })
+                this.setState({ CustomerList: data });
             }.bind(this),
         });
     }
@@ -67,10 +67,10 @@ class Table extends Component {
         this.setState({ showCreateModel: true });
     }
 
-    closeCreateModel =() => {
+    closeCreateModel = () => {
         this.setState({ showCreateModel: false });
-        //window.location.reload()
         this.loadData();
+        
     }
 
     onChange = (e) => {
@@ -93,35 +93,26 @@ class Table extends Component {
 
     //Update
     showUpdateModel = (id) => {
-        this.setState({ showUpdateModel: true });
-        this.setState({ updateId: id });
+        this.setState({ showUpdateModel: true, updateId: id});
+        //this.setState({ updateId: id });
         console.log("Triggered id: ", id);
-        //var obj;
+        var obj;
 
         $.ajax({
             url: "/Customer/GetUpdateCustomer",
             type: "GET",
             data: { 'id': id },
             success: function (data) {
-                this.setState({ commObj: JSON.parse(data) });
-                
-                this.setState({ CustomerId: this.state.commObj.ID, CustomerName: this.state.commObj.NAME, CustomerAddress: this.state.commObj.ADDRESS }, () => {
-                    console.log("obj: ", this.state.commObj);
-                    console.log("CustomerId:", this.state.CustomerId);
-                    console.log("CustomerName:", this.state.CustomerName);
-                    console.log("CustomerAddress:", this.state.CustomerAddress);
-                });
-                
-                //this.setState({ CustomerId: data.Id, CustomerName: data.Name, CustomerAddress: data.Address })
+                obj = JSON.parse(data);
+                //this.setState({ commObj: JSON.parse(data) });
+                this.setState({ CustomerId: obj.ID, CustomerName: obj.NAME, CustomerAddress: obj.ADDRESS });
             }.bind(this)
-        });
-        console.log("obj: ", this.state.commObj);
-        
-
+        });        
     }
 
     closeUpdateModel = () => {
-        this.setState({ showUpdateModel: false });
+        this.setState({ showUpdateModel: false ,CustomerName: '', CustomerAddress: ''});
+        //this.setState({ CustomerList: [] });
         this.loadData();
     }
 

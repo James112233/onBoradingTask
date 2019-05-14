@@ -121,7 +121,7 @@ class Table extends Component {
             data: { 'id': id },
             success: function (data) {
                 var obj = JSON.parse(data);
-                console.log("data: ", data);
+                //console.log("data: ", data);
                 this.setState({
                     SaleId: obj.ID,
                     CustomerId: obj.CUSTOMERID,
@@ -134,7 +134,11 @@ class Table extends Component {
     }
 
     closeUpdateModel = () => {
-        this.setState({ showUpdateModel: false });
+        this.setState({
+            showUpdateModel: false, ProductId: '',
+            StoreId: '',
+            CustomerId: '',
+            DateSold: ''});
         this.loadData();
     }
 
@@ -186,14 +190,14 @@ class Table extends Component {
                 success: function (data) {
                     this.setState({ Success: data });
                     this.closeUpdateModel();
-                    console.log("onUpdateSubmit", data);
+                    //console.log("onUpdateSubmit", data);
                 }.bind(this),
             });
         }
     }
 
     render() {
-        //console.log("this.state.DateSold", this.state.DateSold)
+        console.log("State: ", this.state)
         let list = this.state.SalesList;
         let tableData = null;
         if (list != "") {

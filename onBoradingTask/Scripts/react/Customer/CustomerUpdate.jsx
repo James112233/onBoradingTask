@@ -6,16 +6,8 @@ export default class CustomerUpdate extends Component {
     //constructor(props) {
     //    super(props);
         state = {
-            //CustomerName: this.props.Name,
-            //CustomerAddress: this.props.Address
+            
         }
-
-    //    this.onClose = this.onClose.bind(this);
-    //    console.log("Model: ", props);
-    //}
-    componentDidMount() {
-        console.log("DidMount_props: ", this.props);
-    }
 
 
     onClose = () => {

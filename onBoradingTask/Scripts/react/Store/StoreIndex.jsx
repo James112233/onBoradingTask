@@ -105,7 +105,10 @@ class Table extends Component {
     }
 
     closeUpdateModel = () => {
-        this.setState({ showUpdateModel: false });
+        this.setState({
+            showUpdateModel: false,
+            StoreName: '',
+            StoreAddress: '',});
         this.loadData();
     }
 
