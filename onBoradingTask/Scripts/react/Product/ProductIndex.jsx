@@ -31,20 +31,6 @@ class Table extends Component {
             errors: {}
         }
 
-    //    this.loadData = this.loadData.bind(this);
-
-    //    this.handleDelete = this.handleDelete.bind(this);
-    //    this.closeDeleteModal = this.closeDeleteModal.bind(this);
-
-    //    this.showCreateModel = this.showCreateModel.bind(this);
-    //    this.closeCreateModel = this.closeCreateModel.bind(this);
-    //    this.onChange = this.onChange.bind(this);
-
-    //    this.showUpdateModel = this.showUpdateModel.bind(this);
-    //    this.closeUpdateModel = this.closeUpdateModel.bind(this);
-    //    this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
-
-    //}
 
     componentDidMount() {
         this.loadData();
@@ -61,28 +47,39 @@ class Table extends Component {
         });
     }
 
+    //Clear Data
+    clearData = () => {
+        this.setState({
+            ProductName: '',
+            ProductPrice: '',
+            errors: {}
+        });
+    }
+
     //Delete    
     handleDelete = (id) => {
 
         this.setState({ showDeleteModal: true });
         this.setState({ deleteId: id });
     }
-
+    //Close Delete model
     closeDeleteModal = () => {
         this.setState({ showDeleteModal: false });
         this.loadData();
     }
 
-    //Create
+    //Show Create model
     showCreateModel = () => {
         this.setState({ showCreateModel: true });
     }
 
+    //Close Create model
     closeCreateModel = () => {
         this.setState({ showCreateModel: false });
         this.loadData();
     }
 
+    //Detect any value changes
     onChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value });
@@ -103,11 +100,10 @@ class Table extends Component {
         });
     }
 
+    //Close Update model
     closeUpdateModel = () => {
-        this.setState({
-            showUpdateModel: false,
-            ProductName: '',
-            ProductPrice: '',});
+        this.setState({ showUpdateModel: false });
+        this.clearData();
         this.loadData();
     }
 

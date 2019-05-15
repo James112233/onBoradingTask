@@ -60,16 +60,18 @@ class Table extends Component {
         });
     }
 
-    //Create
+    //Show Create model
     showCreateModel = () => {
         this.setState({ showCreateModel: true });
     }
 
+    //Close Create Model
     closeCreateModel = () => {
         this.setState({ showCreateModel: false });
         this.loadData();
     }
 
+    //Detect any value changes
     onChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value });
@@ -81,7 +83,7 @@ class Table extends Component {
         this.setState({ showDeleteModal: true });
         this.setState({ deleteId: id });
     }
-
+    //Close Delete model
     closeDeleteModal = () => {
         this.setState({ showDeleteModal: false });
         this.loadData();
@@ -101,17 +103,24 @@ class Table extends Component {
                 this.setState({ StoreId: obj.ID, StoreName: obj.NAME, StoreAddress: obj.ADDRESS });
             }.bind(this),
         });
-
+    }
+    //clear data
+    clearData = () => {
+        this.setState({
+            StoreName: '',
+            StoreAddress: '',
+            errors: {}
+        });
     }
 
+    //Close update model
     closeUpdateModel = () => {
-        this.setState({
-            showUpdateModel: false,
-            StoreName: '',
-            StoreAddress: '',});
+        this.setState({ showUpdateModel: false });
+        this.clearData();
         this.loadData();
     }
 
+    //Validation function
     validateForm = () => {
 
         let errors = {}
@@ -140,6 +149,7 @@ class Table extends Component {
         return formIsValid
     }
 
+    //Updata Submit
     onUpdateSubmit = () => {
         if (this.validateForm()) {
 

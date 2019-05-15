@@ -4,6 +4,7 @@ import { Modal, Button } from 'semantic-ui-react';
 import SaleCreate from './SalesCreate.jsx';
 import SaleDelete from './SalesDelete.jsx';
 import SaleUpdate from './SalesUpdate.jsx';
+import { fail } from 'assert';
 
 //const app = document.getElementById('sales');
 //ReactDOM.render(<div>Hello World!</div>, app);
@@ -72,6 +73,31 @@ class Table extends Component {
         return date;
     }
 
+    //Check date format
+    isValidDate = (tempdate) => {
+        var regex_date = /^\d{4}\/\d{1,2}\/\d{1,2}$/;
+        if (!regex_date.test(tempdate)) {
+            return false;
+        }
+
+        var parts = tempdate.split("/");
+        var day = parseInt(parts[2], 10);
+        var month = parseInt(parts[1], 10);
+        var year = parseInt(parts[0], 10);
+
+        if (year < 1000 || year > 3000 || month == 0 || month > 12) {
+            return false;
+        }
+
+        var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        if (year % 4 == 0 || year % 100 != 0 && year % 4 == 0) {
+            monthLength[1] = 29;
+        }
+
+        return day > 0 && day <= monthLength[month - 1];
+    }
+
     //Get sales
     loadData = () => {
         $.ajax({
@@ -83,16 +109,17 @@ class Table extends Component {
         });
     }
 
-    //Create
+    //Show Create model
     showCreateModel = () => {
         this.setState({ showCreateModel: true });
     }
-
+    //Close Create model
     closeCreateModel = () => {
         this.setState({ showCreateModel: false });
         this.loadData();
     }
 
+    //Detect any value changes
     onChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value });
@@ -105,9 +132,21 @@ class Table extends Component {
         this.setState({ deleteId: id });
     }
 
+    //Close Delete model
     closeDeleteModal = () => {
         this.setState({ showDeleteModal: false });
         this.loadData();
+    }
+
+    //Clear data
+    clearData = () => {
+        this.setState({
+            ProductId: '',
+            StoreId: '',
+            CustomerId: '',
+            DateSold: '',
+            errors: {}
+        });
     }
 
     //Update
@@ -134,11 +173,8 @@ class Table extends Component {
     }
 
     closeUpdateModel = () => {
-        this.setState({
-            showUpdateModel: false, ProductId: '',
-            StoreId: '',
-            CustomerId: '',
-            DateSold: ''});
+        this.setState({ showUpdateModel: false });
+        this.clearData();
         this.loadData();
     }
 
@@ -162,11 +198,17 @@ class Table extends Component {
             errors['StoreId'] = '*Please select the Store.'
         }
 
+
+        if (!this.isValidDate(this.state.DateSold)) {
+            formIsValid = false;
+            errors['DateSold'] = '*Please provide correct date format yyyy/mm/dd.'
+        }
+
         if (!this.state.DateSold) {
             formIsValid = false;
             errors['DateSold'] = '*Please provide the sale date.'
         }
-
+        
         this.setState({
             errors: errors
         });
@@ -225,7 +267,7 @@ class Table extends Component {
             <React.Fragment>
                 <div>
                     <div><Button primary onClick={this.showCreateModel}>New Sale</Button></div>
-                    <SaleCreate onChange={this.onChange} onClose={this.closeCreateModel} onCreateSuccess={this.closeCreateModel} showCreateModel={this.state.showCreateModel} />
+                    <SaleCreate onChange={this.onChange} onClose={this.closeCreateModel} onCreateSuccess={this.closeCreateModel} showCreateModel={this.state.showCreateModel} checkDate={this.isValidDate} />
                 </div>
 
                 <div>

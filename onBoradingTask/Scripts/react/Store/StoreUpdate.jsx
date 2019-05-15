@@ -25,14 +25,14 @@ export default class StoreUpdate extends Component {
                         <Form>
                             <Form.Field>
                                 <label>Name</label>
-                                <input type="text" name="StoreName" placeholder='Name' defaultValue={this.props.Name} onChange={this.props.onChange} />
+                                <input type="text" name="StoreName" placeholder='Name' value={this.props.Name} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.StoreName}
                                 </div>
                             </Form.Field>
                             <Form.Field>
                                 <label>Address</label>
-                                <input type="text" name="StoreAddress" placeholder='Address' defaultValue={this.props.Address} onChange={this.props.onChange} />
+                                <input type="text" name="StoreAddress" placeholder='Address' value={this.props.Address} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.StoreAddress}
                                 </div>

@@ -25,14 +25,14 @@ export default class ProductUpdate extends Component {
                         <Form>
                             <Form.Field>
                                 <label>Name</label>
-                                <input type="text" name="ProductName" placeholder='Name' defaultValue={this.props.Name} onChange={this.props.onChange} />
+                                <input type="text" name="ProductName" placeholder='Name' value={this.props.Name} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.ProductName}
                                 </div>
                             </Form.Field>
                             <Form.Field>
                                 <label>Price</label>
-                                <input type="text" name="ProductPrice" placeholder='Price' defaultValue={this.props.Price} onChange={this.props.onChange} />
+                                <input type="text" name="ProductPrice" placeholder='Price' value={this.props.Price} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.ProductPrice}
                                 </div>

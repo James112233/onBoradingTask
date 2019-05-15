@@ -100,7 +100,7 @@ export default class SaleUpdate extends Component {
                             </Form.Field>
                             <Form.Field>
                                 <label>Date Sold</label>
-                                <input type="text" name="DateSold" defaultValue={this.props.DateSold} placeholder='YYYY/MM/DD' onChange={this.props.onChange} />
+                                <input type="text" name="DateSold" value={this.props.DateSold} placeholder='YYYY/MM/DD' onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.DateSold}
                                 </div>

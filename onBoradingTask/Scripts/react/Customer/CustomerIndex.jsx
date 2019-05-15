@@ -33,20 +33,6 @@ class Table extends Component {
             commObj: []
         }
 
-    //    this.loadData = this.loadData.bind(this);
-
-    //    this.showCreateModel = this.showCreateModel.bind(this);
-    //    this.closeCreateModel = this.closeCreateModel.bind(this);
-    //    this.onChange = this.onChange.bind(this);
-
-    //    this.handleDelete = this.handleDelete.bind(this);
-    //    this.closeDeleteModal = this.closeDeleteModal.bind(this);
-
-    //    this.showUpdateModel = this.showUpdateModel.bind(this);
-    //    this.closeUpdateModel = this.closeUpdateModel.bind(this);
-    //    this.onUpdateSubmit = this.onUpdateSubmit.bind(this);
-    //}
-
     componentDidMount() {
         this.loadData();
     }
@@ -62,17 +48,28 @@ class Table extends Component {
         });
     }
 
-    //Create
+    //Clear data
+    clearData = () => {
+        this.setState({
+            CustomerName: '',
+            CustomerAddress: '',
+            errors: {}
+        });
+    }
+
+    //Show Create model
     showCreateModel = () => {
         this.setState({ showCreateModel: true });
     }
 
+    //Close Create model
     closeCreateModel = () => {
         this.setState({ showCreateModel: false });
         this.loadData();
         
     }
 
+    //Detect any value changes
     onChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value });
@@ -85,13 +82,14 @@ class Table extends Component {
         this.setState({ deleteId: id });
     }
 
+    //Close Delete model
     closeDeleteModal= () => {
         this.setState({ showDeleteModal: false });
         this.loadData();
         //window.location.reload()
     }
 
-    //Update
+    //Show Update model
     showUpdateModel = (id) => {
         this.setState({ showUpdateModel: true, updateId: id});
         //this.setState({ updateId: id });
@@ -110,9 +108,10 @@ class Table extends Component {
         });        
     }
 
+    //Close Update model
     closeUpdateModel = () => {
-        this.setState({ showUpdateModel: false ,CustomerName: '', CustomerAddress: ''});
-        //this.setState({ CustomerList: [] });
+        this.setState({ showUpdateModel: false });
+        this.clearData();
         this.loadData();
     }
 

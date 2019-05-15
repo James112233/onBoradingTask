@@ -14,10 +14,6 @@ export default class CustomerCreate extends Component {
             errors: {}
         }
 
-    //    this.onCreateSubmit = this.onCreateSubmit.bind(this);
-    //    this.onClose = this.onClose.bind(this);
-    //    this.onChange = this.onChange.bind(this);
-    //}
 
     validateForm = () => {
 
@@ -66,7 +62,8 @@ export default class CustomerCreate extends Component {
     }
 
     onClose = () => {
-        this.setState({ showDeleteModal: false });
+        this.setState({ errors: {} });
+        this.props.onClose();
         //window.location.reload()
     }
 
@@ -98,7 +95,7 @@ export default class CustomerCreate extends Component {
                         </Form>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.props.onClose} secondary >Cancel
+                        <Button onClick={this.onClose} secondary >Cancel
                         </Button>
                         <Button onClick={this.onCreateSubmit} className="ui green button">Create
                         <i className="check icon"></i>

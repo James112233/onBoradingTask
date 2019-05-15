@@ -66,7 +66,8 @@ export default class ProductCreate extends Component {
     }
 
     onClose = () => {
-        this.setState({ showDeleteModal: false });
+        this.setState({ errors: {} });
+        this.props.onClose();
     }
 
     onChange = (e) => {
@@ -97,7 +98,7 @@ export default class ProductCreate extends Component {
                         </Form>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.props.onClose} secondary >Cancel
+                        <Button onClick={this.onClose} secondary >Cancel
                         </Button>
                         <Button onClick={this.onCreateSubmit} className="ui green button">Create
                         <i className="check icon"></i>

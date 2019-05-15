@@ -56,11 +56,16 @@ export default class SaleCreate extends Component {
             errors['StoreId'] = '*Please select the Store.'
         }
 
+        if (!this.props.checkDate(this.state.DateSold)) {
+            formIsValid = false;
+            errors['DateSold'] = '*Please provide correct date format yyyy/mm/dd.'
+        }
+
         if (!this.state.DateSold) {
             formIsValid = false;
             errors['DateSold'] = '*Please provide the sale date.'
         }
-
+        
         this.setState({
             errors: errors
         });
@@ -90,7 +95,8 @@ export default class SaleCreate extends Component {
     }
 
     onClose = () => {
-        this.setState({ showDeleteModal: false });
+        this.setState({ errors: {} });
+        this.props.onClose();
     }
 
     onChange = (e) => {
@@ -176,7 +182,7 @@ export default class SaleCreate extends Component {
                         </Form>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button onClick={this.props.onClose} secondary >Cancel
+                        <Button onClick={this.onClose} secondary >Cancel
                         </Button>
                         <Button onClick={this.onCreateSubmit} className="ui green button">Create
                         <i className="check icon"></i>

@@ -24,14 +24,14 @@ export default class CustomerUpdate extends Component {
                         <Form>
                             <Form.Field>
                                 <label>Name</label>
-                                <input type="text" name="CustomerName" placeholder="Name" defaultValue={this.props.Name} onChange={this.props.onChange} />
+                                <input type="text" name="CustomerName" placeholder="Name" value={this.props.Name} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.CustomerName}
                                 </div>
                             </Form.Field>
                             <Form.Field>
                                 <label>Address</label>
-                                <input type="text" name="CustomerAddress" placeholder="Address" defaultValue={this.props.Address} onChange={this.props.onChange} />
+                                <input type="text" name="CustomerAddress" placeholder="Address" value={this.props.Address} onChange={this.props.onChange} />
                                 <div style={{ color: 'red' }}>
                                     {this.props.errors.CustomerAddress}
                                 </div>
