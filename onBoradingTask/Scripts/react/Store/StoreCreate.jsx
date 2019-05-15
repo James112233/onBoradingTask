@@ -58,7 +58,7 @@ export default class StoreCreate extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    this.props.onCreateSuccess();
+                    this.onClose();
                 }.bind(this)
             });
 
@@ -66,7 +66,11 @@ export default class StoreCreate extends Component {
     }
 
     onClose = () => {
-        this.setState({ errors: {} });
+        this.setState({
+            StoreName: '',
+            StoreAddress: '',
+            errors: {}
+        });
         this.props.onClose();
     }
 
@@ -77,7 +81,7 @@ export default class StoreCreate extends Component {
     render() {
         return (
             <React.Fragment>
-                <Modal open={this.props.showCreateModel} onClose={this.props.onClose} size={'small'}>
+                <Modal open={this.props.showCreateModel} onClose={this.onClose} size={'small'}>
                     <Modal.Header> Create Store </Modal.Header>
                     <Modal.Content>
                         <Form>

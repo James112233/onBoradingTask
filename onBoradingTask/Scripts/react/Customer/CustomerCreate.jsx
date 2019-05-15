@@ -54,16 +54,23 @@ export default class CustomerCreate extends Component {
                 data: data,
                 success: function (data) {
                     this.setState({ Success: data })
-                    this.props.onSubmitSuccess();
+                    this.onClose();
                 }.bind(this)
             });
 
         }
     }
 
+
+
     onClose = () => {
-        this.setState({ errors: {} });
+        this.setState({
+            CustomerName: '',
+            CustomerAddress: '',
+            errors: {}
+        }, () => { console.log("Create State: ", this.state); });
         this.props.onClose();
+        
         //window.location.reload()
     }
 
@@ -72,9 +79,10 @@ export default class CustomerCreate extends Component {
     }
 
     render() {
+        console.log("Create Model State: ", this.state);
         return (
             <React.Fragment>
-                <Modal open={this.props.showCreateModel} onClose={this.props.onClose} size={'small'}>
+                <Modal open={this.props.showCreateModel} onClose={this.onClose} size={'small'}>
                     <Modal.Header> Create Customer </Modal.Header>
                     <Modal.Content>
                         <Form>

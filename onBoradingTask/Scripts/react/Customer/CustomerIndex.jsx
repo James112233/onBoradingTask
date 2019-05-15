@@ -65,6 +65,7 @@ class Table extends Component {
     //Close Create model
     closeCreateModel = () => {
         this.setState({ showCreateModel: false });
+        this.clearData();
         this.loadData();
         
     }
